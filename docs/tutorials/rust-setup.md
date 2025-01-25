@@ -16,16 +16,22 @@ Basic knowledge of CLI
 A. Open your terminal or command prompt
 
 B. Create a new directory(Note: Decide where you want to store this directory. You should choose this before making your directory. Additionally, name your directory what you want as long as it is appropriate and siginificant to what we are trying to accomplish.)
-    mkdir rust-setup-tutorial
-    cd rust-setup-tutorial
+```
+mkdir rust-setup-tutorial
+cd rust-setup-tutorial
+```
 
 C. Initialize a new Git Repository.
-    git init
+```
+git init
+```
 
 D. Create a README.md file
-    echo "# Our first Rust project" > README.md
-    git add README.md
-    git commit -m "Initial commit with README"
+```
+echo "# Our first Rust project" > README.md
+git add README.md
+git commit -m "Initial commit with README"
+```
 
 #### Step 2: Create a Remote Repository on GitHub
 
@@ -44,12 +50,13 @@ D. Click Create Repository.
 
 1. Add the Github repository as a remote:
     git remote add origin https://github.com/<your-username>/comp423-course-notes.git
-* Replace <your-username> with your GitHub username.
+> [!NOTE] 
+> Replace <your-username> with your GitHub username.
 
-2. Use the git branch subcommand to check your default branch. It should be main but older versions of git use the name master when refering to the default branch. You can rename your default branch by using the command: git branch -M main.
+2. Use the ```git branch``` subcommand to check your default branch. It should be main but older versions of git use the name master when refering to the default branch. You can rename your default branch by using the command: ```git branch -M main```.
 
 3. Push local commits to your GitHub repository
-    git push --set-upstream origin main
+```git push --set-upstream origin main```
 
 4. Back in the browser, refresh your GitHub repository and you should be able to see your new commit.
 
