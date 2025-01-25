@@ -61,3 +61,38 @@ D. Click Create Repository.
 4. Back in the browser, refresh your GitHub repository and you should be able to see your new commit.
 
 ### Part 2: Setting up the Development Environment
+
+#### Step 1: 
+
+1. In VS Code, open the ```rust-setup-tutorial``` directory. You can do this via: File > Open Folder.
+
+2. Install the Dev Containers extension for VS Code.
+
+3. Create a ```.devcontainer``` directory in the root of you project with the following file inside of this "hidden" configuration directory:
+```.devcontainer/devcontainer.json```
+
+The ```devcontainer.json``` file defines the configuration for your development environment. Here we're specifying the following:
+
+* ```name```: A descriptive name for your dev container.
+* ```image```: The Docker image to use, in this case the latest version of a Rust environment.
+* ```customizations```: Adds useful configurations to VS Code, like installing extensions. This ensures everyone using this dev container will automatically install the necessary extensions.
+* ```postCreateCommand``` A command to run after the container is created.
+```
+{
+  "name": "Rust Tutorial Setup",
+  "image": "mcr.microsoft.com/devcontainers/rust:latest",
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": ["rust-lang.rust-analyzer"]
+    }
+  },
+  "postCreateCommand":
+}
+```
+### Step 3: Creating your Rust Project
+* Reopen the project in a dev container: To do so press Ctrl+Shift+P and type "Dev Containers:Reopen in Container" in the search bar.
+> [!Note]
+> This may take some time, as it will have to download the necessary version of Rust.
+* Next, open a new terminal and enter ```rustc --version```.
+* You see something along these lines: ``````.
