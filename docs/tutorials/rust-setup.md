@@ -3,11 +3,11 @@
 Primary author: [Jaxon Chavis](https://github.com/jkchavis)
 
 ## Prerequisites
-A GitHub account
-Git
-Visual Studio Code (VSCode)
-Docker
-Basic knowledge of CLI
+* A GitHub account
+* Git
+* Visual Studio Code (VSCode)
+* Docker
+* Basic knowledge of CLI
 ## Instructions
 ### Part 1: Setting up your project
 
@@ -47,7 +47,7 @@ D. Click Create Repository.
 #### Step 3: Link your Local Repository to GitHub
 
 1. Add the Github repository as a remote:
-    git remote add origin https://github.com/*your-username*/rush-setup-tutorials.git
+```git remote add origin https://github.com/<your-username>/rush-setup-tutorials.git```
 > [!NOTE] 
 > Replace <your-username> with your GitHub username.
 
@@ -64,8 +64,9 @@ D. Click Create Repository.
 
 2. Install the Dev Containers extension for VS Code.
 
-3. Create a ```.devcontainer``` directory in the root of you project with the following file inside of this "hidden" configuration directory:
-```.devcontainer/devcontainer.json```
+3. Create a ```.devcontainer``` directory in the root of you project with the following file inside of this "hidden" configuration directory:```.devcontainer/devcontainer.json```. To do this use the following two commands:
+* ```mkdir .devcontainer```
+* ```code .devcontainer/devcontainer.json```
 
 The ```devcontainer.json``` file defines the configuration for your development environment. Here we're specifying the following:
 
@@ -83,7 +84,7 @@ The ```devcontainer.json``` file defines the configuration for your development 
       "extensions": ["rust-lang.rust-analyzer"]
     }
   },
-  "postCreateCommand": rustc --version
+  "postCreateCommand": "rustc --version"
 }
 ```
 ### Part 3: Creating your Rust Project
@@ -99,7 +100,7 @@ The ```devcontainer.json``` file defines the configuration for your development 
 * Write the following code:
 ```
 fn main(){
-  println!("Hello, COMP423!")
+  println!("Hello COMP423")
 }
 ```
 > [!Important]
@@ -116,5 +117,34 @@ Unlike ```cargo build```, which we used in the previous section. ```cargo run```
 ```cargo build``` compiles the local package and all of their dependencies. ```cargo build``` is a way to divide the ```cargo run``` command into two steps. This is often used in advanced debugging and working on multiple binaries. 
 
 If you want learn more about these commands use ```cargo build --verbose``` and ```cargo run --verbose``` to get a closer look at what each command does behind the hill.
+
+### Finalizing Project
+#### Potential Errors and Warning (Optional)
+If you are like me, you may have gotten a warning that looks something like this:
+![Alt text](/workspaces/comp423-course-notes/Screenshot 2025-01-26 115928.png)
+```os error 13``` is an error in which permission is denied to the user, likely due to the system believing you are not owner of these files. This causes ```.lock``` files that had been added to the working directory and .git files. As you can see you can complete the tutorial without fixing this error but it will prevent you from using some ```git``` and ```cargo``` commands. 
+#### My solution
+* First, follow this [guide](https://www.geeksforgeeks.org/git-a-lock-file-already-exists-in-the-repository-which-blocks-this-operation-from-completing/#) that will teach you more about the issue and how to delete the ```.lock``` files.
+* Once all ```.lock``` files have been deleted use the following commands in your terminal.
+1. ```sudo chmod -R u+w hello_423```. This will reset file permission.
+2. ```sudo chown -R $(whoami):$(whoami) hello_423``` This will change the targeted file to owned by the current user.
+3. ```cargo clean``` Run this to ensure that no files have been corrupted.
+4. ```cargo run``` This will run the file again.
+This should result in your terminal returning something like this:
+![Alt text](/workspaces/comp423-course-notes/Screenshot 2025-01-26 123043.png)
+
+Now that you have completed this tutorial remember to save all work using Ctrl+S.
+Then, in your terminal run:
+* ```git add .```
+* ```git commit -m "<message>"```, replacing message with an appropriate and accurate message.
+* ```git push --set-upstream origin main```
+
+### Results
+Below I have linked my own repository after completing the my tutorial. I have also linked my partner, Ana's Go tutorial, as well as my results from that.
+#### Rust
+[My Rust Repository](https://github.com/jkchavis/rust-setup-tutorial)
+#### Go
+[Ana's Tutorial](https://github.com/analrest/comp423-course-notes/blob/main/docs/tutorials/go-setup.md)
+[My Go Repository](https://github.com/jkchavis/comp423-go)
 
 > *Jordan, Kris "Starting a Static Website Project with MkDocs - COMP423 - Spring 2025" [https://comp423-25s.github.io/resources/MkDocs/tutorial/#step-2-add-requirementstxt-python-dependency-configuration](https://comp423-25s.github.io/resources/MkDocs/tutorial/#step-2-add-requirementstxt-python-dependency-configuration) 2025, January 17*
