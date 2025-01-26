@@ -22,9 +22,7 @@ cd rust-setup-tutorial
 ```
 
 C. Initialize a new Git Repository.
-```
-git init
-```
+```git init```
 
 D. Create a README.md file
 ```
@@ -62,8 +60,6 @@ D. Click Create Repository.
 
 ### Part 2: Setting up the Development Environment
 
-#### Step 1: 
-
 1. In VS Code, open the ```rust-setup-tutorial``` directory. You can do this via: File > Open Folder.
 
 2. Install the Dev Containers extension for VS Code.
@@ -90,9 +86,35 @@ The ```devcontainer.json``` file defines the configuration for your development 
   "postCreateCommand":
 }
 ```
-### Step 3: Creating your Rust Project
-* Reopen the project in a dev container: To do so press Ctrl+Shift+P and type "Dev Containers:Reopen in Container" in the search bar.
+### Part 3: Creating your Rust Project
+1. Reopen the project in a dev container: To do so press Ctrl+Shift+P and type "Dev Containers:Reopen in Container" in the search bar.
 > [!Note]
 > This may take some time, as it will have to download the necessary version of Rust.
-* Next, open a new terminal and enter ```rustc --version```.
+2. Next, we want to ensure that our version of rust is the newest version. To do this, open a new terminal and enter ```rustc --version```.
 * You see something along these lines: ``````.
+3. Now that we've confirmed that we are running on the correct version of Rust. We must now create a new binary project:```cargo new hello_423 --vcs none```. Let's break this command down. ```cargo new``` is our command to make a new binary project. This command will create a project directory and three items inside that directory: a ```Cargo.toml``` file, an ```src``` directory, and a ```main.rs``` file inside of that ```src``` file. ```hello_423``` is the name that we give the directory. Adding ```--vcs none``` ensures that a new git repository won't automatically be created by the ```cargo new``` command.
+
+4. With our project set up, we can begin writing our code.
+* Open ```main.rs```
+* Write the following code:
+```
+fn main(){
+  println!("Hello, COMP423!")
+}
+```
+> [!Important]
+> Make sure you save your work before moving on.
+5. Back in the terminal, enter ```cd hello_423```. Then, run ```cargo build```.
+* ```cargo build``` compiles the source code into an executable binary. Similar to how we used ```gcc main.c -o main``` in COMP211.
+6. Finally, run ```cargo run```.
+* This is the same using ```./target/debug/my_project```.
+
+### Run vs Build
+#### Cargo Run
+Unlike ```cargo build```, which we used in the previous section. ```cargo run``` compiles and executes the local package by combinign the ```cargo build``` command and the ```./target/debug/my_project``` command. 
+#### Cargo Build
+```cargo build``` compiles the local package and all of their dependencies. ```cargo build``` is a way to divide the ```cargo run``` command into two steps. This is often used in advanced debugging and working on multiple binaries. 
+
+If you want learn more about these commands use ```cargo build --verbose``` and ```cargo run --verbose``` to get a closer look at what each command does behind the hill.
+
+> *Jordan, Kris "Starting a Static Website Project with MkDocs - COMP423 - Spring 2025" [https://comp423-25s.github.io/resources/MkDocs/tutorial/#step-2-add-requirementstxt-python-dependency-configuration](https://comp423-25s.github.io/resources/MkDocs/tutorial/#step-2-add-requirementstxt-python-dependency-configuration) 2025, January 17*
