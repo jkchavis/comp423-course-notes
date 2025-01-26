@@ -47,7 +47,7 @@ D. Click Create Repository.
 #### Step 3: Link your Local Repository to GitHub
 
 1. Add the Github repository as a remote:
-    git remote add origin https://github.com/<your-username>/comp423-course-notes.git
+    git remote add origin https://github.com/*your-username*/rush-setup-tutorials.git
 > [!NOTE] 
 > Replace <your-username> with your GitHub username.
 
@@ -83,7 +83,7 @@ The ```devcontainer.json``` file defines the configuration for your development 
       "extensions": ["rust-lang.rust-analyzer"]
     }
   },
-  "postCreateCommand":
+  "postCreateCommand": rustc --version
 }
 ```
 ### Part 3: Creating your Rust Project
@@ -91,7 +91,7 @@ The ```devcontainer.json``` file defines the configuration for your development 
 > [!Note]
 > This may take some time, as it will have to download the necessary version of Rust.
 2. Next, we want to ensure that our version of rust is the newest version. To do this, open a new terminal and enter ```rustc --version```.
-* You see something along these lines: ``````.
+* You see something along these lines: ```rustc 1.83.0```.
 3. Now that we've confirmed that we are running on the correct version of Rust. We must now create a new binary project:```cargo new hello_423 --vcs none```. Let's break this command down. ```cargo new``` is our command to make a new binary project. This command will create a project directory and three items inside that directory: a ```Cargo.toml``` file, an ```src``` directory, and a ```main.rs``` file inside of that ```src``` file. ```hello_423``` is the name that we give the directory. Adding ```--vcs none``` ensures that a new git repository won't automatically be created by the ```cargo new``` command.
 
 4. With our project set up, we can begin writing our code.
@@ -107,11 +107,11 @@ fn main(){
 5. Back in the terminal, enter ```cd hello_423```. Then, run ```cargo build```.
 * ```cargo build``` compiles the source code into an executable binary. Similar to how we used ```gcc main.c -o main``` in COMP211.
 6. Finally, run ```cargo run```.
-* This is the same using ```./target/debug/my_project```.
+* This is the same using ```./target/debug/hello_423```.
 
 ### Run vs Build
 #### Cargo Run
-Unlike ```cargo build```, which we used in the previous section. ```cargo run``` compiles and executes the local package by combinign the ```cargo build``` command and the ```./target/debug/my_project``` command. 
+Unlike ```cargo build```, which we used in the previous section. ```cargo run``` compiles and executes the local package by combinign the ```cargo build``` command and the ```./target/debug/hello_423``` command. 
 #### Cargo Build
 ```cargo build``` compiles the local package and all of their dependencies. ```cargo build``` is a way to divide the ```cargo run``` command into two steps. This is often used in advanced debugging and working on multiple binaries. 
 
