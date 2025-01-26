@@ -36,9 +36,9 @@ git commit -m "Initial commit with README"
 A. Log in to your GitHub account and navigate to the "Create a New Repository" page.
 
 B. Fill in the details as follows:
-    - Repository Name: rust-setup-tutorials
-    - Description: "Tutorial to Rust"
-    - Visibility: Public
+* Repository Name: rust-setup-tutorials
+* Description: "Tutorial to Rust"
+* Visibility: Public
 
 C. Do not initialize the repository with a README, .gitignore, or license.
 
@@ -120,9 +120,7 @@ If you want learn more about these commands use ```cargo build --verbose``` and 
 
 ### Finalizing Project
 #### Potential Errors and Warning (Optional)
-If you are like me, you may have gotten a warning that looks something like this:
-![Alt text](/workspaces/comp423-course-notes/Screenshot 2025-01-26 115928.png)
-```os error 13``` is an error in which permission is denied to the user, likely due to the system believing you are not owner of these files. This causes ```.lock``` files that had been added to the working directory and .git files. As you can see you can complete the tutorial without fixing this error but it will prevent you from using some ```git``` and ```cargo``` commands. 
+If you are like me, you may have gotten ```os error 13```. This is an error in which permission is denied to the user, likely due to the system believing you are not owner of these files. This causes ```.lock``` files that had been added to the working directory and .git files. As you can see you can complete the tutorial without fixing this error but it will prevent you from using some ```git``` and ```cargo``` commands. 
 #### My solution
 * First, follow this [guide](https://www.geeksforgeeks.org/git-a-lock-file-already-exists-in-the-repository-which-blocks-this-operation-from-completing/#) that will teach you more about the issue and how to delete the ```.lock``` files.
 * Once all ```.lock``` files have been deleted use the following commands in your terminal.
@@ -130,8 +128,7 @@ If you are like me, you may have gotten a warning that looks something like this
 2. ```sudo chown -R $(whoami):$(whoami) hello_423``` This will change the targeted file to owned by the current user.
 3. ```cargo clean``` Run this to ensure that no files have been corrupted.
 4. ```cargo run``` This will run the file again.
-This should result in your terminal returning something like this:
-![Alt text](/workspaces/comp423-course-notes/Screenshot 2025-01-26 123043.png)
+This should result in your terminal running without any warnings or errors.
 
 Now that you have completed this tutorial remember to save all work using Ctrl+S.
 Then, in your terminal run:
